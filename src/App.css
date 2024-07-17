@@ -1,0 +1,60 @@
+.App {
+  text-align: center;
+}
+
+.addtodos{
+  width: 100%;
+  background-color: black;
+  color: white;
+  height:auto;
+  padding: 100px 100px 500px 100px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.input-design{
+  margin: auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  justify-content: center;
+  
+}
+.input-design input{
+  padding-left: 20px;
+  height: 50px;
+}
+.input-design button{
+margin-top: 20px;
+ width: 100px;
+ height: 45px;
+ cursor: pointer;
+}
+
+
+ul{
+  width: 50%;
+  
+  margin: auto;
+}
+ul li{
+  background-color: rgb(7, 221, 225);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+margin-top: 50px;
+padding: 10px;
+color: black;
+}
+
+
+.btns button{
+  padding: 10px 20px;
+  margin-left: 10px;
+}
