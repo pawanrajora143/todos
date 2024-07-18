@@ -38,13 +38,23 @@ const Todo = () => {
               <div className="btns">
                 <button>{status}</button>
                 <button>Edit</button>
-                <button>Delete</button>
+                <button id={'btn-delete--'+id} onClick={((e)=>handleDelete(e))}>Delete</button>
               </div>
             </li>
           );
         })}
       </ul>
     );
+  }
+
+
+  function handleDelete(e){
+
+    const id = e.target.id.split("--")[1];
+     const newList = todos.filter((item)=>item.id !== id)
+     updateTodo(newList)
+
+
   }
 
 
