@@ -1,10 +1,22 @@
 .App {
   text-align: center;
+  
 }
+
+
+li p{
+  color: #fff;
+}
+
 
 .addtodos{
   width: 100%;
-  background-color: black;
+  /*
+* Created with https://www.css-gradient.com
+* Gradient link: https://www.css-gradient.com/?c1=9b4d85&c2=e8b18d&gt=l&gd=dtt
+*/
+background: #9B4D85;
+background: linear-gradient(180deg, #9B4D85, #E8B18D);
   color: white;
   height:auto;
   padding: 100px 100px 500px 100px;
@@ -57,4 +69,13 @@ color: black;
 .btns button{
   padding: 10px 20px;
   margin-left: 10px;
+  cursor: pointer;
+}
+
+
+.active{
+ background-color: #000;
+}
+.done{
+  background:crimson;
 }
