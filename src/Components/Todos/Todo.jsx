@@ -66,6 +66,37 @@ const Todo = () => {
     );
   }
 
+  function editingTodo(e){
+
+    const id = e.target.id.split("--")[1]
+    const index = todos.findIndex((item)=> item.id === id)
+    const innerClone = {...todos[index] }
+
+
+    if(innerClone.editing){
+        const inputId = document.getElementById("Edit-btn--" + id)
+        console.log(inputId.value) 
+        innerClone.text = inputId.value
+    }
+
+   if(innerClone.editing == true){
+    innerClone.editing = false
+   }
+   else{innerClone.editing = true
+
+   }
+
+    const orhinalTodo = [...todos]
+    orhinalTodo[index] = innerClone
+    updateTodos(orhinalTodo)
+
+
+
+  
+
+
+}
+
   function handleDelete(e) {
     const id = e.target.id.split("--")[1];
     const newList = todos.filter((item) => item.id !== id);
