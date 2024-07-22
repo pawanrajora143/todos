@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 
 const Todo = () => {
   const [todos, updateTodo] = useState([
-    { id: "" + Date.now(), text: "Todo List", status: "active" },
+    { id: "" + Date.now(), text: "Todo List", status: "active" , editing:true},
   ]);
 
   const inputRef = useRef();
@@ -14,6 +14,7 @@ const Todo = () => {
       id: "" + Date.now(),
       text: inputRef.current.value,
       status: "active",
+      editing:false
     };
 
     const cloneItem = [...todos];
@@ -35,23 +36,71 @@ const Todo = () => {
     updateTodo(cloneAllList);
   }
 
+
+  function changeButtonName(e){
+
+    const id = e.target.id.split("--")[1]
+    // console.log(id)
+
+    const index = todos.findIndex((item) => item.id === id)
+    // console.log(index)
+
+    const cloneIndex = {...todos [index] } 
+    // cloneIndex.editing  cloneIndex.editing
+
+
+    if(cloneIndex.editing){
+      const inputId = document.getElementById("input-btn--"+ id)
+      console.log(inputId.value)
+      cloneIndex.text = inputId.value
+
+      
+    }
+
+
+    if(cloneIndex.editing === true){
+      cloneIndex.editing = false;
+
+    }
+    else{
+      cloneIndex.editing = true;
+    }
+    console.log(cloneIndex.editing)
+    const allClone = [...todos]
+    allClone[index] = cloneIndex
+    updateTodo(allClone)
+
+ 
+    
+
+
+  }
+
+
+
+
   function list() {
     return (
       <ul>
         {todos.map((item) => {
-          const { id, text, status } = item;
+          const { id, text, status , editing } = item;
           return (
             <li key={id} className={status == "active" ? "active" : "done"}>
-              <p>{text}</p>
+              
+              { editing ?  <input type="text" className="input_design" defaultValue={text} id={"input-btn--" +id}/>  : <p>{text}</p>}
+              
+             
               <div className="btns">
                 <button
                   id={"btn-status--" + id}
                   onClick={(e) => chnageActiveClass(e)}
-                  disabled={status === "done"}
+                  disabled={status === "done" || editing === true}
                 >
                   {status}
                 </button>
-                <button disabled={status === "done"}>Edit</button>
+                <button id={"edit-btn--" + id}
+                onClick={(e) => changeButtonName(e)}
+                 disabled={status === "done" }> {editing ? "Edit Done" : "Edit"}  </button>
                 <button
                   id={"btn-delete--" + id}
                   onClick={(e) => handleDelete(e)}
@@ -66,36 +115,7 @@ const Todo = () => {
     );
   }
 
-  function editingTodo(e){
 
-    const id = e.target.id.split("--")[1]
-    const index = todos.findIndex((item)=> item.id === id)
-    const innerClone = {...todos[index] }
-
-
-    if(innerClone.editing){
-        const inputId = document.getElementById("Edit-btn--" + id)
-        console.log(inputId.value) 
-        innerClone.text = inputId.value
-    }
-
-   if(innerClone.editing == true){
-    innerClone.editing = false
-   }
-   else{innerClone.editing = true
-
-   }
-
-    const orhinalTodo = [...todos]
-    orhinalTodo[index] = innerClone
-    updateTodos(orhinalTodo)
-
-
-
-  
-
-
-}
 
   function handleDelete(e) {
     const id = e.target.id.split("--")[1];
