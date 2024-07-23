@@ -1,13 +1,27 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
+
+const  getDataFromLs =()=>{
+const data = localStorage.getItem("data")
+if(data){
+  return JSON.parse(data)  
+}
+else{
+  return []
+}
+}
 
 const Todo = () => {
-  const [todos, updateTodo] = useState([
-    { id: "" + Date.now(), text: "Todo List", status: "active" , editing:true},
-  ]);
+  const [todos, updateTodo] = useState(getDataFromLs());
 
   const inputRef = useRef();
 
   const [addButtonDisable, updateButtonDisable] = useState(true);
+
+
+  useEffect(()=>{
+  localStorage.setItem("data" , JSON.stringify(todos))
+  }, [todos])
 
   function getValue() {
     const item = {

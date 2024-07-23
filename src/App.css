@@ -18,7 +18,7 @@ li p{
 background: #9B4D85;
 background: linear-gradient(180deg, #9B4D85, #E8B18D);
   color: white;
-  height:auto;
+  height:100vh;
   padding: 100px 100px 500px 100px;
 }
 
@@ -248,6 +248,7 @@ ul li {
   padding-left: 0px;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 .input_design {
