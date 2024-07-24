@@ -129,6 +129,46 @@ const Todo = () => {
     );
   }
 
+  import { useState } from "react";
+
+export const useHooks = () => {
+  const [todos, updateTodos] = useState([
+    { id: "" + Date.now(), text: "default text", status: "active" },
+  ]);
+
+
+
+  function addInputText(text) {
+    console.log(text);
+
+    const addItem = {
+      id: "" + Date.now(),
+      text,
+      status: "active",
+    };
+
+    const cloneTodos = [...todos];
+    cloneTodos.push(addItem);
+    updateTodos(cloneTodos);
+  }
+
+  function changeStatus(id){
+    console.log(id)
+
+
+
+  }
+
+
+
+  return {
+    todos,
+    addInputText,
+    changeStatus
+  };
+};
+
+
 
 
   function handleDelete(e) {
