@@ -23,6 +23,10 @@ const Todo = () => {
   localStorage.setItem("data" , JSON.stringify(todos))
   }, [todos])
 
+  // useEffect(()=>{
+  //   localStorage.setItem("data" , JSON.stringify(todos))
+  //   }, [todos])
+
   function getValue() {
     const item = {
       id: "" + Date.now(),
@@ -147,6 +151,40 @@ const Todo = () => {
       updateButtonDisable(true);
     }
   }
+
+
+  // function handleDelete(e) {
+  //   const id = e.target.id.split("--")[1];
+  //   const newList = todos.filter((item) => item.id !== id);
+  //   updateTodo(newList);
+  // }
+
+  // function handleInputTextChange(event) {
+  //   let inputText = event.target.value.trim().length;
+
+  //   if (inputText > 0) updateButtonDisable(false);
+  //   else {
+  //     updateButtonDisable(true);
+  //   }
+  // }
+
+    // function handleDelete(e) {
+  //   const id = e.target.id.split("--")[1];
+  //   const newList = todos.filter((item) => item.id !== id);
+  //   updateTodo(newList);
+  // }
+
+  // function handleInputTextChange(event) {
+  //   let inputText = event.target.value.trim().length;
+
+  //   if (inputText > 0) updateButtonDisable(false);
+  //   else {
+  //     updateButtonDisable(true);
+  //   }
+  // }
+
+
+
 
   return (
     <div className="addtodos">
